@@ -7,17 +7,17 @@ import (
 )
 
 type Cache struct {
-	c *cache.Cache
+	ch *cache.Cache
 }
 
 func NewCache() *Cache {
-	return &Cache{c: cache.New(5*time.Minute, 10*time.Minute)}
+	return &Cache{ch: cache.New(5*time.Minute, 10*time.Minute)}
 }
 
 func (c *Cache) Get(key string) (interface{}, bool) {
-	return c.c.Get(key)
+	return c.ch.Get(key)
 }
 
 func (c *Cache) Set(key string, value interface{}) {
-	c.c.Set(key, value, cache.DefaultExpiration)
+	c.ch.Set(key, value, cache.DefaultExpiration)
 }
